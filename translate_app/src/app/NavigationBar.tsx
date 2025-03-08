@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   return (
     <nav className="bg-white/80 dark:bg-black/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
@@ -24,7 +23,7 @@ export default function Navbar() {
               </svg>
               <span className="ml-2 text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">TranslationApp</span>
             </Link>
-            <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <div className=" ml-6 flex space-x-4 md:space-x-8">
               <Link
                 href="/"
                 className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${

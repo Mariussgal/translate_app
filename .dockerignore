@@ -1,6 +1,0 @@
-translate_app/
-.git/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd

@@ -86,17 +86,47 @@ def upload_file():
 def process_excel_file(file_path):
     """Extract word pairs from Excel file"""
     word_pairs = []
-    wb = openpyxl.load_workbook(file_path)
-    sheet = wb.active
     
-    for row in sheet.iter_rows(min_row=2, values_only=True):
-        if len(row) < 2:
-            continue
+    try:
+        wb = openpyxl.load_workbook(file_path)
+        sheet = wb.active
+        
+    
+        print(f"Processing Excel file: {file_path}")
+        print(f"Sheet name: {sheet.title}")
+        print(f"Dimensions: {sheet.dimensions}")
+        
+        row_count = 0
+        pair_count = 0
+        
+    
+        for row in sheet.iter_rows(min_row=2, values_only=True):
+            row_count += 1
             
-        french, english = row[:2]
-        if french and english:
-            word_pairs.append((str(french).lower(), str(english).lower()))
-    
+            if len(row) < 2:
+                print(f"Skipping row {row_count}: Not enough columns")
+                continue
+                
+
+            french, english = row[:2]
+            
+            if french and english:
+                french_str = str(french).lower().strip()
+                english_str = str(english).lower().strip()
+                
+                word_pairs.append((english_str, french_str))
+                pair_count += 1
+                print(f"Added pair: {english_str} = {french_str}")
+            else:
+                print(f"Skipping row {row_count}: Empty value(s)")
+        
+        print(f"Total rows processed: {row_count}")
+        print(f"Total pairs added: {pair_count}")
+        
+    except Exception as e:
+        print(f"Error processing Excel file: {str(e)}")
+        raise
+        
     return word_pairs
 
 def process_csv_file(file_path, encoding='utf-8'):

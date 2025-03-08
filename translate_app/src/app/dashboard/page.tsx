@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from 'react';
-import Footer from '../footer';
 import { translationApi } from '@/lib/api';
 
 interface TranslationResult {
@@ -59,7 +58,7 @@ export default function Dashboard() {
           )}
         </div>
       </main>
-      <Footer />
+     
     </div>
   );
 }

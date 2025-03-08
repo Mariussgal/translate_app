@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Header from "./header";
-import Footer from "./footer";
+
 import { translationApi } from "@/lib/api";
 
 interface TranslationResult {
@@ -238,7 +238,7 @@ const translateText = async () => {
         </div>
       </main>
 
-      <Footer/>
+  
     </div>
   );
 }

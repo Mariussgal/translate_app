@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "English-French translation tool",
     images: [
       {
-        url: "../public/preview_banner.png", 
+        url: "/preview_banner.png",
         width: 1200,
         height: 630,
         alt: "Translation Tool Preview",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: "English-French translation tool",
     images: [
       {
-        url: "../public/preview_banner.png", 
+        url: "/preview_banner.png", 
         width: 1200,
         height: 630,
         alt: "Translation Tool Preview",

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./NavigationBar";
-import Image from 'next/image';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,7 +18,34 @@ export const metadata: Metadata = {
   title: "Translation Tool",
   description: "English-French translation tool",
 
+  openGraph: {
+    title: "Translation Tool",
+    description: "English-French translation tool",
+    images: [
+      {
+        url: "../public/preview_banner.png", 
+        width: 1200,
+        height: 630,
+        alt: "Translation Tool Preview",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Translation Tool",
+    description: "English-French translation tool",
+    images: [
+      {
+        url: "../public/preview_banner.png", 
+        width: 1200,
+        height: 630,
+        alt: "Translation Tool Preview",
+      },
+    ],
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -31,19 +57,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-
-      <div className="w-full bg-gray-800 flex justify-center items-center py-2">
-          <Image 
-            src="../public/preview_banner.png" 
-            alt="Preview Version" 
-            width={1000} 
-            height={50} 
-            className="h-auto max-h-12 w-auto"
-            priority
-          />
-        </div>
-
-
         <Navbar />
         {children}
       </body>

@@ -30,50 +30,52 @@ export default function Home() {
     setTranslatedText(sourceText);
   };
 
-  const translateText = async () => {
-    if (!sourceText.trim()) {
-      return;
-    }
 
-    setIsTranslating(true);
-    setError("");
+const translateText = async () => {
+  if (!sourceText.trim()) {
+    return;
+  }
+
+  setIsTranslating(true);
+  setError("");
+  
+  try {
+    const fromLang = sourceLanguage === "Français" ? "french" : "english";
     
-    try {
-
-      const fromLang = sourceLanguage === "Français" ? "french" : "english";
-      
-
-      if (!sourceText.includes(" ")) {
-        const result = await translationApi.translate(sourceText, fromLang) as TranslationResult;        
-        if (result.translations && result.translations.length > 0) {
-          setTranslatedText(result.translations.join(", "));
-        } else {
-          setTranslatedText("");
-          setError("No translation found for this word.");
-        }
+    if (!sourceText.includes(" ")) {
+      const result = await translationApi.translate(sourceText.trim(), fromLang) as TranslationResult;        
+      if (result.translations && result.translations.length > 0) {
+        setTranslatedText(result.translations.join(", "));
       } else {
-        const words = sourceText.split(/\s+/);
-        const translations = await Promise.all(
-          words.map(async (word) => {
-            try {
-              const result = await translationApi.translate(word, fromLang)as TranslationResult;
-              return result.translations && result.translations.length > 0 
-                ? result.translations[0] 
-                : word;
-            } catch (e) {
-              return word;
-            }
-          })
-        );
-        setTranslatedText(translations.join(" "));
+        setTranslatedText("");
+        setError("No translation found for this word.");
       }
-    } catch (err) {
-      console.error("Translation error:", err);
-      setError("Failed to translate. Please try again.");
-    } finally {
-      setIsTranslating(false);
+    } else {
+    
+      const words = sourceText.split(/\s+/).filter(word => word.trim() !== ""); 
+      const translations = await Promise.all(
+        words.map(async (word) => {
+          if (!word.trim()) return ""; 
+          try {
+            const result = await translationApi.translate(word.trim(), fromLang) as TranslationResult;
+            return result.translations && result.translations.length > 0 
+              ? result.translations[0] 
+              : word;
+          } catch (e) {
+            console.error(`Error translating word "${word}":`, e);
+            return word; 
+          }
+        })
+      );
+      setTranslatedText(translations.join(" "));
     }
-  };
+  } catch (err) {
+    console.error("Translation error:", err);
+    setError("Failed to translate. Please try again.");
+  } finally {
+    setIsTranslating(false);
+  }
+};
 
   const languages = [
     "Français", "English", 

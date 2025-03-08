@@ -66,7 +66,18 @@ export const translationApi = {
       console.error('File upload error:', error);
       throw error;
     }
+  },
+
+  checkStatus: async () => {
+    try {
+      const response = await apiClient.get('/');
+      return response.data;
+    } catch (error) {
+      console.error('API status check error:', error);
+      throw error;
+    }
   }
+
 };
 
 export default translationApi;

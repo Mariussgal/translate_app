@@ -64,10 +64,14 @@ def upload_file():
                     "date": datetime.datetime.now().isoformat()
                 })
         
-        return jsonify({
-            "success": True,
-            "wordCount": len(word_pairs),
-            "message": f"Successfully imported {len(word_pairs)} word pairs."
+            sample_words = word_pairs[:5] if word_pairs else []
+        
+            return jsonify({
+                "success": True,
+                "wordCount": len(word_pairs),
+                "message": f"Successfully imported {len(word_pairs)} word pairs.",
+                "sampleWords": sample_words
+            
         })
         
     except Exception as e:

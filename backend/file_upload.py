@@ -129,12 +129,32 @@ def process_txt_file(file_path):
     """Extract word pairs from text file (format: english=french)"""
     word_pairs = []
     
-    with open(file_path, mode='r', encoding='utf-8') as file:
-        for line in file:
-            line = line.strip()
-            if '=' in line:
-                english, french = line.split('=')
-                if english and french:
-                    word_pairs.append((english.strip().lower(), french.strip().lower()))
     
+    encodings = ['utf-8', 'latin1', 'cp1252']
+    
+    for encoding in encodings:
+        try:
+            with open(file_path, mode='r', encoding=encoding) as file:
+                for line_number, line in enumerate(file, 1):
+                    line = line.strip()
+                    if '=' in line:
+                        parts = line.split('=', 1)  
+                        if len(parts) == 2:
+                            english, french = parts
+                            if english.strip() and french.strip():
+                                word_pairs.append((english.strip().lower(), french.strip().lower()))
+                        else:
+                            print(f"Warning: Line {line_number} doesn't contain a valid word pair: {line}")
+                    elif line:  
+                        print(f"Warning: Line {line_number} doesn't contain an equals sign: {line}")
+            
+            
+            break
+        except UnicodeDecodeError:
+            if encoding == encodings[-1]: 
+                raise
+            continue  
+    
+    print(f"Successfully processed {len(word_pairs)} word pairs from text file")
     return word_pairs
+

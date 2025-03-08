@@ -1,5 +1,7 @@
 # Translation Tool
 
+deployed at https://translation-app-sand.vercel.app
+
 ## 📌 Project Description
 
 As part of an academic assignment I was asked to implement an automatic translation tool for both

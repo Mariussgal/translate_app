@@ -8,12 +8,6 @@ export default function Footer(){
             <a href="#" className="text-sm hover:underline">About</a>
             <a href="#" className="text-sm hover:underline">Help</a>
           </div>
-          <div className="flex items-center gap-4">
-            <select className="bg-transparent border rounded-md py-1 px-2 text-sm">
-              <option className=" py-1 px-2 text-sm text-black">Français</option>
-              <option className=" py-1 px-2 text-sm text-black">English</option>
-            </select>
-          </div>
         </div>
       </footer>
 

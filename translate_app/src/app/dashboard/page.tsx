@@ -222,7 +222,7 @@ function DictionaryManagementUI() {
             <button
               onClick={handleAddModify}
               disabled={isLoading || !word.trim() || !translation.trim()}
-              className={`flex-1 px-6 py-3 rounded-md font-medium transition-all ${
+              className={`flex-1 px-4 py-2 sm:px-6 sm:py-3 rounded-md font-medium transition-all ${
                 isLoading || !word.trim() || !translation.trim()
                   ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
                   : 'bg-gradient-to-r from-blue-600 to-blue-500 text-white hover:shadow-md hover:from-blue-700 hover:to-blue-600 active:scale-95'
@@ -248,7 +248,7 @@ function DictionaryManagementUI() {
             <button
               onClick={handleDelete}
               disabled={isLoading || !word.trim()}
-              className={`flex-1 px-6 py-3 rounded-md font-medium transition-all ${
+              className={`flex-1 px-4 py-2 sm:px-6 sm:py-3 rounded-md font-medium transition-all ${
                 isLoading || !word.trim()
                   ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
                   : 'bg-gradient-to-r from-red-500 to-red-400 text-white hover:shadow-md hover:from-red-600 hover:to-red-500 active:scale-95'

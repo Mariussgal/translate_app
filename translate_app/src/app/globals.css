@@ -1,27 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  /* Couleurs de base (mode sombre par défaut) */
+
   --background: #000000;
   --background-secondary: #111111;
   --background-tertiary: #222222;
   --foreground: #f1f5f9;
   --foreground-secondary: #cbd5e1;
   --foreground-tertiary: #94a3b8;
-  
-  /* Animation speed */
+
   --transition-slow: 0.5s;
   --transition-normal: 0.3s;
   --transition-fast: 0.15s;
   
-  /* Border radius */
+ 
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
   
-  /* Brand Colors */
+  
   --primary: #2563eb;
   --primary-hover: #1d4ed8;
   --primary-light: rgba(37, 99, 235, 0.2);
@@ -36,8 +35,7 @@
   --accent-hover: #db2777;
   --accent-light: rgba(236, 72, 153, 0.2);
   --accent-dark: #be185d;
-  
-  /* Semantic Colors */
+ 
   --success: #10b981;
   --success-hover: #059669;
   --success-light: rgba(16, 185, 129, 0.2);
@@ -52,28 +50,31 @@
   --error-hover: #dc2626;
   --error-light: rgba(239, 68, 68, 0.2);
   --error-dark: #b91c1c;
-  
-  /* UI Elements */
-  --card-background: #111111;
-  --card-border: #333333;
+
+  --card-background: #1e1e1e;
+  --card-border: #383838;
   --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
   
-  --input-background: #000000;
-  --input-border: #333333;
+  --input-background: #1a1a1a;
+  --input-border: #383838;
   --input-focus-border: var(--primary);
   --input-placeholder: #666666;
   
-  --navbar-background: rgba(0, 0, 0, 0.8);
+  --navbar-background: rgba(18, 18, 18, 0.8);
   --navbar-border: #333333;
+  
 
-  /* Gradients */
+  --box-background-light: rgba(255, 255, 255, 0.07);
+  --box-background-dark: rgba(30, 30, 30, 0.95);
+
+
   --gradient-primary: linear-gradient(to right, var(--primary), var(--secondary));
   --gradient-accent: linear-gradient(to right, var(--secondary), var(--accent));
   --gradient-success: linear-gradient(to right, var(--success), #06b6d4);
   --gradient-warning: linear-gradient(to right, var(--warning), #fb7185);
 }
 
-/* Base styles */
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -81,7 +82,7 @@ body {
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Gradient text effect */
+
 .gradient-text {
   background: var(--gradient-primary);
   -webkit-background-clip: text;
@@ -98,7 +99,7 @@ body {
   display: inline-block;
 }
 
-/* Card styling */
+
 .card {
   background: var(--card-background);
   border: 1px solid var(--card-border);
@@ -111,7 +112,6 @@ body {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Button styling */
 .btn {
   padding: 0.5rem 1rem;
   border-radius: var(--radius-md);
@@ -198,7 +198,6 @@ body {
   opacity: 1;
 }
 
-/* Input styling */
 .input {
   background-color: var(--input-background);
   border: 1px solid var(--input-border);
@@ -217,7 +216,7 @@ body {
   box-shadow: 0 0 0 3px var(--primary-light);
 }
 
-/* Navbar */
+
 .navbar {
   background-color: var(--navbar-background);
   backdrop-filter: blur(10px);
@@ -225,7 +224,6 @@ body {
   transition: background-color var(--transition-normal);
 }
 
-/* Transitions for elements */
 *, *::before, *::after {
   transition-property: color, background-color, border-color, 
                       text-decoration-color, fill, stroke,

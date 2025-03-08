@@ -142,14 +142,14 @@ function DictionaryManagementUI() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-8 bg-white/40 dark:bg-black/30 backdrop-blur-sm rounded-xl shadow-lg border border-foreground/5">
+    <div className="w-full max-w-4xl mx-auto p-8 bg-black backdrop-blur-sm rounded-xl shadow-lg border border-[#444444]">
       <h2 className="text-3xl font-bold mb-8 text-center gradient-text">
         Dictionary Management
       </h2>
       
       <div className="mb-8">
         <h3 className="text-lg font-medium mb-4 text-foreground/90">Language Direction</h3>
-        <div className="flex items-center space-x-8 p-4 bg-black/5 dark:bg-white/5 rounded-lg">
+        <div className="flex items-center space-x-8 p-4 bg-[#333333] rounded-lg">
           <label className="flex items-center cursor-pointer group">
             <div className="relative">
               <input
@@ -183,9 +183,8 @@ function DictionaryManagementUI() {
       </div>
       
       <div className="grid grid-cols-1 gap-8">
-        <div className="bg-black/5 dark:bg-white/5 p-6 rounded-lg border border-foreground/10">
+        <div className="bg-[#333333] p-6 rounded-lg border border-[#444444]">
           <h3 className="text-xl font-semibold mb-6 flex items-center">
-
             Word Management
           </h3>
           
@@ -196,7 +195,7 @@ function DictionaryManagementUI() {
               </label>
               <input
                 type="text"
-                className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 border border-foreground/20 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                className="w-full px-4 py-3 bg-[#1e1e1e] border border-[#444444] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 placeholder={`Enter ${fromLang === 'english' ? 'English' : 'French'} word...`}
                 value={word}
                 onChange={(e) => setWord(e.target.value)}
@@ -209,7 +208,7 @@ function DictionaryManagementUI() {
               </label>
               <input
                 type="text"
-                className="w-full px-4 py-3 bg-white/50 dark:bg-black/20 border border-foreground/20 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                className="w-full px-4 py-3 bg-[#1e1e1e] border border-[#444444] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 placeholder={`Enter ${fromLang === 'english' ? 'French' : 'English'} translation...`}
                 value={translation}
                 onChange={(e) => setTranslation(e.target.value)}
@@ -351,7 +350,7 @@ function FileUploadUI() {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-8 bg-white/40 dark:bg-black/30 backdrop-blur-sm rounded-xl shadow-lg border border-foreground/5">
+    <div className="w-full max-w-2xl mx-auto p-8 bg-[#2a2a2a] backdrop-blur-sm rounded-xl shadow-lg border border-[#444444]">
       <h2 className="text-3xl font-bold mb-8 text-center gradient-text">
         Import Translation Dictionary
       </h2>
@@ -359,7 +358,7 @@ function FileUploadUI() {
       <div className="mb-8">
         <label className="block text-lg font-medium mb-4 text-foreground/90">Select File</label>
         <div className="flex items-center justify-center w-full">
-          <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 transition-colors border-foreground/20 group">
+          <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer hover:bg-[#333333] transition-colors border-[#444444] group">
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
               <svg className="w-14 h-14 mb-4 text-foreground/40 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
@@ -383,7 +382,7 @@ function FileUploadUI() {
       </div>
       
       {file && (
-        <div className="mb-6 p-6 bg-black/5 dark:bg-white/5 rounded-lg border border-foreground/10">
+        <div className="mb-6 p-6 bg-[#333333] rounded-lg border border-[#444444]">
           <div className="flex items-center">
             <div className="mr-4 text-blue-500">
               {file.name.endsWith('.xlsx') || file.name.endsWith('.xls') ? (
@@ -469,10 +468,10 @@ function FileUploadUI() {
         </div>
       )}
       
-      <div className="mt-10 pt-6 border-t border-foreground/10">
+      <div className="mt-10 pt-6 border-t border-[#444444]">
         <h3 className="text-xl font-semibold mb-4 text-foreground/90">Supported Formats</h3>
         <ul className="space-y-4 text-sm">
-          <li className="flex items-start p-3 bg-black/5 dark:bg-white/5 rounded-lg">
+          <li className="flex items-start p-3 bg-[#333333] rounded-lg">
             <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
             </svg>
@@ -481,7 +480,7 @@ function FileUploadUI() {
               <p className="mt-1">Spreadsheet with English words in column A and French translations in column B.</p>
             </div>
           </li>
-          <li className="flex items-start p-3 bg-black/5 dark:bg-white/5 rounded-lg">
+          <li className="flex items-start p-3 bg-[#333333] rounded-lg">
             <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
             </svg>

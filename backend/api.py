@@ -58,11 +58,10 @@ app.register_blueprint(file_upload.file_upload_bp)
 @app.route('/')
 def home():
     return jsonify({
+        "status": "online",
         "message": "Translation API is running",
         "endpoints": {
-            "translate": "/translate?word=<word>&fromLang=<english|french>",
-            "dictionary_management": "/word",
-            "file_upload": "/upload"
+            "translate": "/translate?word=<word>&fromLang=<english|french>"
         }
     })
 

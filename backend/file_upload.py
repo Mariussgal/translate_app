@@ -92,9 +92,9 @@ def process_excel_file(file_path):
         if len(row) < 2:
             continue
             
-        english, french = row[:2]
-        if english and french:
-            word_pairs.append((str(english).lower(), str(french).lower()))
+        french, english = row[:2]
+        if french and english:
+            word_pairs.append((str(french).lower(), str(english).lower()))
     
     return word_pairs
 

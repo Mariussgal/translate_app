@@ -51,12 +51,11 @@ def upload_file():
         elif file_ext == '.txt':
             word_pairs = process_txt_file(file_path)
         
-      
+
         for english, french in word_pairs:
             english_tree.insert(english, french)
             french_tree.insert(french, english)
             
-       
             if len(recent_additions) < 100: 
                 recent_additions.append({
                     "word": english,
@@ -64,14 +63,13 @@ def upload_file():
                     "date": datetime.datetime.now().isoformat()
                 })
         
-            sample_words = word_pairs[:5] if word_pairs else []
+        sample_words = word_pairs[:5] if word_pairs else []
         
-            return jsonify({
-                "success": True,
-                "wordCount": len(word_pairs),
-                "message": f"Successfully imported {len(word_pairs)} word pairs.",
-                "sampleWords": sample_words
-            
+        return jsonify({
+            "success": True,
+            "wordCount": len(word_pairs),
+            "message": f"Successfully imported {len(word_pairs)} word pairs.",
+            "sampleWords": sample_words
         })
         
     except Exception as e:
@@ -79,7 +77,6 @@ def upload_file():
             "error": f"Error processing file: {str(e)}"
         }), 500
     finally:
-    
         try:
             os.remove(file_path)
             os.rmdir(temp_dir)
@@ -129,7 +126,7 @@ def process_txt_file(file_path):
     """Extract word pairs from text file (format: english=french)"""
     word_pairs = []
     
-    # Essayer plusieurs encodages
+   
     encodings = ['utf-8', 'latin1', 'cp1252']
     success = False
     

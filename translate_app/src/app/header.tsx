@@ -6,8 +6,8 @@ export default function Header() {
       <div className="max-w-6xl mx-auto flex items-center justify-between">
 
         <div className="text-center space-y-4 mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
-            Instantaneous translation
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text [-webkit-background-clip:text] text-transparent">
+          Instantaneous translation
           </h1>
           <p className="text-foreground/60 max-w-xl mx-auto">
             Translate your sentences between french and english within few seconds 

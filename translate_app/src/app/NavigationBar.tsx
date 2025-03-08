@@ -21,7 +21,7 @@ export default function Navbar() {
                 <path d="m22 22-5-10-5 10" />
                 <path d="M14 18h6" />
               </svg>
-              <span className="ml-2 text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">TranslationApp</span>
+              <span className="ml-2 text-xl font-bold gradient-text">TranslationApp</span>
             </Link>
             <div className=" ml-6 flex space-x-4 md:space-x-8">
               <Link

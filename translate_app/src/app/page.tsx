@@ -226,6 +226,12 @@ export default function Home() {
                 </>
               )}
             </span>
+            <style jsx>{`
+              @supports not (background-image: linear-gradient(to right, #2563eb, #9333ea)) { button {
+                  background-color: #4f46e5 !important; 
+      }
+    }
+  `}</style>
           </button>
         </div>
       </main>

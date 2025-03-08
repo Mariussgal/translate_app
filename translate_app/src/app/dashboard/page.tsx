@@ -18,7 +18,7 @@ export default function Dashboard() {
     <div className="flex flex-col min-h-screen bg-background">
       <main className="flex-1 flex flex-col p-4 sm:p-6 md:p-8 max-w-6xl mx-auto w-full space-y-8">
         <div className="flex flex-col space-y-4">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold gradient-text">
             Admin Dashboard
           </h1>
           <p className="text-foreground/60 text-lg">
@@ -144,7 +144,7 @@ function DictionaryManagementUI() {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-8 bg-white/40 dark:bg-black/30 backdrop-blur-sm rounded-xl shadow-lg border border-foreground/5">
-      <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <h2 className="text-3xl font-bold mb-8 text-center gradient-text">
         Dictionary Management
       </h2>
       
@@ -186,9 +186,7 @@ function DictionaryManagementUI() {
       <div className="grid grid-cols-1 gap-8">
         <div className="bg-black/5 dark:bg-white/5 p-6 rounded-lg border border-foreground/10">
           <h3 className="text-xl font-semibold mb-6 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M7.75 2.75a.75.75 0 00-1.5 0v1.258a32.987 32.987 0 00-3.599.278.75.75 0 10.198 1.487A31.545 31.545 0 018.7 5.545 19.381 19.381 0 017 9.56a19.418 19.418 0 01-1.002-2.05.75.75 0 00-1.384.577 20.935 20.935 0 001.492 2.91 19.613 19.613 0 01-3.828 4.154.75.75 0 10.945 1.164A21.116 21.116 0 007 12.331c.095.132.192.262.29.391a.75.75 0 001.194-.91c-.204-.266-.4-.538-.59-.815a20.888 20.888 0 003.067-7.106 31.36 31.36 0 013.352.246.75.75 0 10.214-1.486 32.952 32.952 0 00-3.737-.305V1.75a.75.75 0 00-1.5 0v1.3a32.864 32.864 0 00-3.627.11.75.75 0 10.224 1.482 31.34 31.34 0 013.022-.266 19.412 19.412 0 01-2.9 7.373z" />
-            </svg>
+
             Word Management
           </h3>
           
@@ -355,7 +353,7 @@ function FileUploadUI() {
 
   return (
     <div className="w-full max-w-2xl mx-auto p-8 bg-white/40 dark:bg-black/30 backdrop-blur-sm rounded-xl shadow-lg border border-foreground/5">
-      <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <h2 className="text-3xl font-bold mb-8 text-center gradient-text">
         Import Translation Dictionary
       </h2>
       

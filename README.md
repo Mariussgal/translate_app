@@ -1,6 +1,6 @@
 # Translation Tool
 
-## Project Description
+## 📌 Project Description
 
 As part of an academic assignment I was asked to developp an app using the Binary search Tree (BST) for implementing an automatic translation tool  for both
 English-to-French and French-to-English translation. 
@@ -10,9 +10,9 @@ The application provides:
 - Vocabulary practice for common expressions needed in real-world interactions
 - An intuitive learning tool to build confidence in English language use
 
-## App Overview
+## 🌍 App Overview
 
-This consists of two main components:
+This app consists of two main components:
 
 ### 1. Backend API (Flask)
 - RESTful API for translation services
@@ -30,7 +30,7 @@ This consists of two main components:
 
 ## Technologies and Tools Used
 
-### Backend
+### 🔹 Backend
 - **Python**: Core programming language
 - **Flask**: Web framework for building the API
 - **Flask-CORS**: Cross-Origin Resource Sharing support
@@ -38,7 +38,7 @@ This consists of two main components:
 - **OpenPyXL**: For Excel file processing
 - **Werkzeug**: Utilities for file handling and security
 
-### Frontend
+### 🔹 Frontend
 - **Next.js **
 - **React **
 - **TypeScript**
@@ -54,7 +54,7 @@ This consists of two main components:
 
 ---
 
-### Deployment Instructions
+### 🚀 Deployment Instructions
 
 
 1. **Clone the repository**

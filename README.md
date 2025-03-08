@@ -2,8 +2,8 @@
 
 ## 📌 Project Description
 
-As part of an academic assignment I was asked to developp an app using the Binary search Tree (BST) for implementing an automatic translation tool  for both
-English-to-French and French-to-English translation. 
+As part of an academic assignment I was asked to implementing an automatic translation tool for both
+English-to-French and French-to-English translation by using the Binary search Tree (BST). 
 
 The application provides:
 - Quick translations between English and French

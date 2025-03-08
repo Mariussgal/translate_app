@@ -129,32 +129,43 @@ def process_txt_file(file_path):
     """Extract word pairs from text file (format: english=french)"""
     word_pairs = []
     
-    
+    # Essayer plusieurs encodages
     encodings = ['utf-8', 'latin1', 'cp1252']
+    success = False
     
     for encoding in encodings:
         try:
             with open(file_path, mode='r', encoding=encoding) as file:
-                for line_number, line in enumerate(file, 1):
-                    line = line.strip()
-                    if '=' in line:
-                        parts = line.split('=', 1)  
-                        if len(parts) == 2:
-                            english, french = parts
-                            if english.strip() and french.strip():
-                                word_pairs.append((english.strip().lower(), french.strip().lower()))
+                for line_num, line in enumerate(file, 1):
+                    try:
+                        line = line.strip()
+                        if not line: 
+                            continue
+                            
+                        if '=' in line:
+                            parts = line.split('=', 1)  
+                            if len(parts) == 2:
+                                english, french = parts
+                                if english.strip() and french.strip():
+                                    word_pairs.append((english.strip().lower(), french.strip().lower()))
+                                else:
+                                    print(f"Ligne {line_num}: Partie vide dans '{line}'")
                         else:
-                            print(f"Warning: Line {line_number} doesn't contain a valid word pair: {line}")
-                    elif line:  
-                        print(f"Warning: Line {line_number} doesn't contain an equals sign: {line}")
-            
-            
+                            print(f"Ligne {line_num}: Format incorrect '{line}' (pas de signe =)")
+                    except Exception as e:
+                        print(f"Erreur ligne {line_num}: {str(e)}")
+
+            success = True
             break
         except UnicodeDecodeError:
-            if encoding == encodings[-1]: 
-                raise
-            continue  
+            continue
+        except Exception as e:
+            print(f"Erreur de lecture du fichier: {str(e)}")
+            break
     
-    print(f"Successfully processed {len(word_pairs)} word pairs from text file")
+    if not success:
+        print("Impossible de lire le fichier avec les encodages disponibles")
+    
+    print(f"Nombre de paires de mots trouvées: {len(word_pairs)}")
     return word_pairs
 

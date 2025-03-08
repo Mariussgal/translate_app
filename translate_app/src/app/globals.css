@@ -1,37 +1,235 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Couleurs de base (mode sombre par défaut) */
+  --background: #000000;
+  --background-secondary: #111111;
+  --background-tertiary: #222222;
+  --foreground: #f1f5f9;
+  --foreground-secondary: #cbd5e1;
+  --foreground-tertiary: #94a3b8;
+  
+  /* Animation speed */
+  --transition-slow: 0.5s;
+  --transition-normal: 0.3s;
+  --transition-fast: 0.15s;
+  
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  
+  /* Brand Colors */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: rgba(37, 99, 235, 0.2);
+  --primary-dark: #1e40af;
+  
+  --secondary: #9333ea;
+  --secondary-hover: #7e22ce;
+  --secondary-light: rgba(147, 51, 234, 0.2);
+  --secondary-dark: #6b21a8;
+  
+  --accent: #ec4899;
+  --accent-hover: #db2777;
+  --accent-light: rgba(236, 72, 153, 0.2);
+  --accent-dark: #be185d;
+  
+  /* Semantic Colors */
+  --success: #10b981;
+  --success-hover: #059669;
+  --success-light: rgba(16, 185, 129, 0.2);
+  --success-dark: #047857;
+  
+  --warning: #f59e0b;
+  --warning-hover: #d97706;
+  --warning-light: rgba(245, 158, 11, 0.2);
+  --warning-dark: #b45309;
+  
+  --error: #ef4444;
+  --error-hover: #dc2626;
+  --error-light: rgba(239, 68, 68, 0.2);
+  --error-dark: #b91c1c;
+  
+  /* UI Elements */
+  --card-background: #111111;
+  --card-border: #333333;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  
+  --input-background: #000000;
+  --input-border: #333333;
+  --input-focus-border: var(--primary);
+  --input-placeholder: #666666;
+  
+  --navbar-background: rgba(0, 0, 0, 0.8);
+  --navbar-border: #333333;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(to right, var(--primary), var(--secondary));
+  --gradient-accent: linear-gradient(to right, var(--secondary), var(--accent));
+  --gradient-success: linear-gradient(to right, var(--success), #06b6d4);
+  --gradient-warning: linear-gradient(to right, var(--warning), #fb7185);
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
+/* Gradient text effect */
 .gradient-text {
-  background: linear-gradient(to right, #2563eb, #9333ea, #ec4899);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  display: inline-block; 
+  display: inline-block;
+}
+
+.gradient-accent-text {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Card styling */
+.card {
+  background: var(--card-background);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Button styling */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-hover);
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: var(--success-hover);
+}
+
+.btn-warning {
+  background-color: var(--warning);
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: var(--warning-hover);
+}
+
+.btn-error {
+  background-color: var(--error);
+  color: white;
+}
+
+.btn-error:hover {
+  background-color: var(--error-hover);
+}
+
+.btn-gradient {
+  background: var(--gradient-primary);
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-accent);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.btn-gradient:hover::before {
+  opacity: 1;
+}
+
+/* Input styling */
+.input {
+  background-color: var(--input-background);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--navbar-background);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--navbar-border);
+  transition: background-color var(--transition-normal);
+}
+
+/* Transitions for elements */
+*, *::before, *::after {
+  transition-property: color, background-color, border-color, 
+                      text-decoration-color, fill, stroke,
+                      opacity, box-shadow, transform, filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--transition-fast);
 }

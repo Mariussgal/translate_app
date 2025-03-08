@@ -55,6 +55,17 @@ file_upload.initialize(english_tree, french_tree, recent_additions)
 app.register_blueprint(dictionary_management.dictionary_bp)
 app.register_blueprint(file_upload.file_upload_bp)
 
+@app.route('/')
+def home():
+    return jsonify({
+        "message": "Translation API is running",
+        "endpoints": {
+            "translate": "/translate?word=<word>&fromLang=<english|french>",
+            "dictionary_management": "/word",
+            "file_upload": "/upload"
+        }
+    })
+
 @app.route('/translate', methods=['GET'])
 def translate():
     word = request.args.get('word', '').lower()

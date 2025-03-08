@@ -3,7 +3,7 @@
 ## 📌 Project Description
 
 As part of an academic assignment I was asked to implement an automatic translation tool for both
-English-to-French and French-to-English translation by using the Binary search Tree (BST). 
+English-to-French and French-to-English translation by using the Binary search Tree (BST) data structure. 
 
 The application provides:
 - Quick translations between English and French

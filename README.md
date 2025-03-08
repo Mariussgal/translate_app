@@ -41,8 +41,8 @@ This app consists of two main components:
 - **Werkzeug**: Utilities for file handling and security
 
 ### 🔹 Frontend
-- **Next.js **
-- **React **
+- **Next.js**
+- **React**
 - **TypeScript**
 - **Tailwind CSS 4**
 - **Axios** 
@@ -50,9 +50,8 @@ This app consists of two main components:
 
 ### Development and Deployment
 - **Render**: Cloud platform for deploying the backend API
-- **Vercel** (recommended): For deploying the Next.js frontend
-- **Git**: Version control
-- **npm/yarn**: Package management
+- **Vercel**: For deploying the Next.js frontend
+- **npm**: Package management
 
 ---
 

@@ -136,3 +136,6 @@ In our implementation, each node in the tree contains:
 - Left and right child references
 
 This structure was chosen to optimize the translation process while maintaining the ability to expand the dictionary over time.
+
+## Contribution
+Contributions to this project are welcome. Please feel free to submit bug fixes, improvements, or new features via pull requests. For major changes, please open an issue first to discuss what you would like to change.

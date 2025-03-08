@@ -3,7 +3,6 @@ import os
 import tempfile
 import datetime
 from werkzeug.utils import secure_filename
-import csv
 import openpyxl
 from main import TranslationBST
 
@@ -127,29 +126,6 @@ def process_excel_file(file_path):
         print(f"Error processing Excel file: {str(e)}")
         raise
         
-    return word_pairs
-
-def process_csv_file(file_path, encoding='utf-8'):
-    """Extract word pairs from CSV file"""
-    word_pairs = []
-    
-    try:
-        with open(file_path, mode='r', encoding=encoding) as file:
-            reader = csv.reader(file)
-            for row in reader:
-                if len(row) >= 2:
-                    english, french = row[:2]
-                    if english and french:
-                        word_pairs.append((str(english).lower(), str(french).lower()))
-    except UnicodeDecodeError:
-        with open(file_path, mode='r', encoding='latin1') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                if len(row) >= 2:
-                    english, french = row[:2]
-                    if english and french:
-                        word_pairs.append((str(english).lower(), str(french).lower()))
-    
     return word_pairs
 
 def process_txt_file(file_path):

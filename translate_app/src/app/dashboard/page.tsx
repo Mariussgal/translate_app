@@ -368,7 +368,7 @@ function FileUploadUI() {
                 <span className="font-semibold">Click to upload</span> or drag and drop
               </p>
               <p className="text-sm text-foreground/60 group-hover:text-foreground/80 transition-colors">
-                Excel (.xlsx, .xls), CSV (.csv), or Text (.txt)
+                Excel (.xlsx, .xls) or Text (.txt)
               </p>
             </div>
             <input 
@@ -392,13 +392,7 @@ function FileUploadUI() {
                   <polyline points="14 2 14 6 18 6"/>
                   <path d="M8 13h2v4H8zm4-5h2v9h-2zm4 3h2v6h-2z"/>
                 </svg>
-              ) : file.name.endsWith('.csv') ? (
-                <svg className="w-10 h-10" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6.5L14.5 2z"/>
-                  <polyline points="14 2 14 6 18 6"/>
-                  <path d="M8 12h8m-8 4h4"/>
-                </svg>
-              ) : (
+              )  : (
                 <svg className="w-10 h-10" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6.5L14.5 2z"/>
                   <polyline points="14 2 14 6 18 6"/>
@@ -485,15 +479,6 @@ function FileUploadUI() {
             <div>
               <strong className="text-foreground/90">Excel (.xlsx, .xls)</strong>
               <p className="mt-1">Spreadsheet with English words in column A and French translations in column B.</p>
-            </div>
-          </li>
-          <li className="flex items-start p-3 bg-black/5 dark:bg-white/5 rounded-lg">
-            <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <div>
-              <strong className="text-foreground/90">CSV (.csv)</strong>
-              <p className="mt-1">Comma-separated values with English word, followed by French translation.</p>
             </div>
           </li>
           <li className="flex items-start p-3 bg-black/5 dark:bg-white/5 rounded-lg">

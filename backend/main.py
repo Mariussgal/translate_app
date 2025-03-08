@@ -170,28 +170,6 @@ def load_from_excel(file_path):
             word_pairs.append((str(english).lower(), str(french).lower()))
     return word_pairs
 
-def load_from_csv(file_path, encoding='utf-8'):
-    """Charge des paires de mots depuis un fichier CSV."""
-    word_pairs = []
-    try:
-        with open(file_path, mode='r', encoding=encoding) as file:
-            reader = csv.reader(file)
-            for row in reader:
-                if len(row) >= 2:
-                    english, french = row[:2]
-                    if english and french:
-                        word_pairs.append((str(english).lower(), str(french).lower()))
-    except UnicodeDecodeError:
-        
-        with open(file_path, mode='r', encoding='latin1') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                if len(row) >= 2:
-                    english, french = row[:2]
-                    if english and french:
-                        word_pairs.append((str(english).lower(), str(french).lower()))
-    return word_pairs
-
 def load_from_txt(file_path):
     """Charge des paires de mots depuis un fichier texte (format: mot_anglais=mot_français)."""
     word_pairs = []
@@ -232,7 +210,6 @@ def initialize_with_test_data():
 if __name__ == "__main__":
     
     english_tree, french_tree = initialize_with_test_data()
-    
     
     print("Test de recherche:")
     print("Translation de 'hello':", english_tree.search("hello"))

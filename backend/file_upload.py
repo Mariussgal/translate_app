@@ -45,8 +45,6 @@ def upload_file():
         
         if file_ext in ['.xlsx', '.xls']:
             word_pairs = process_excel_file(file_path)
-        elif file_ext == '.csv':
-            word_pairs = process_csv_file(file_path)
         elif file_ext == '.txt':
             word_pairs = process_txt_file(file_path)
         

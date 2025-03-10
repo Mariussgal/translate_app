@@ -7,34 +7,15 @@ dictionary_bp = Blueprint('dictionary', __name__)
 english_tree = None
 french_tree = None
 recent_additions = None
-stats = None
 
-def initialize(eng_tree, fr_tree, additions, statistics):
+
+def initialize(eng_tree, fr_tree, additions):
     """Initialize the module with shared data structures from api.py"""
-    global english_tree, french_tree, recent_additions, stats
+    global english_tree, french_tree, recent_additions
     english_tree = eng_tree
     french_tree = fr_tree
     recent_additions = additions
-    stats = statistics
-
-def update_statistics():
-    """Update dictionary statistics"""
-    global stats, english_tree, french_tree
     
-    if english_tree and french_tree:
-        eng_translations, eng_nodes = count_translations(english_tree.root)
-        fr_translations, fr_nodes = count_translations(french_tree.root)
-        
-        total_words = eng_nodes + fr_nodes
-        total_translations = eng_translations + fr_translations
-        
-        stats.update({
-            "totalWords": total_words,
-            "englishWords": eng_nodes,
-            "frenchWords": fr_nodes,
-            "averageTranslationsPerWord": round(total_translations / total_words, 2) if total_words > 0 else 1.0,
-            "lastUpdated": datetime.datetime.now().isoformat()
-        })
 
 def count_translations(node):
     """Count the total number of translations and nodes in a tree"""
@@ -79,8 +60,6 @@ def manage_word():
         if len(recent_additions) > 100:
             recent_additions.pop(0)
         
-        update_statistics()
-        return jsonify({"success": True})
     
     elif request.method == 'DELETE':
         word = request.args.get('word', '').lower()
@@ -104,8 +83,6 @@ def manage_word():
                 
                 english_tree.root = delete_node(english_tree.root, word, None)
             
-            update_statistics()
-            return jsonify({"success": True})
         else:
             return jsonify({"error": "Word not found"}), 404
 
@@ -153,12 +130,6 @@ def find_min(node):
         current = current.left
     return current
 
-@dictionary_bp.route('/dictionary/stats', methods=['GET'])
-def get_stats():
-    """Get statistics about the dictionary"""
-    global stats
-    update_statistics()
-    return jsonify(stats)
 
 @dictionary_bp.route('/dictionary/recent', methods=['GET'])
 def get_recent():

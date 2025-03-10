@@ -1,7 +1,7 @@
 import openpyxl
 
 class TreeNode:
-    """Représente un nœud dans l'arbre binaire de recherche."""
+    """Represent a node in the BST."""
     def __init__(self, key, value):
         self.key = key.lower()
         self.values = {value.lower()}  
@@ -9,16 +9,16 @@ class TreeNode:
         self.right = None
 
     def add_translation(self, value):
-        """Ajoute une nouvelle traduction à l'ensemble des valeurs."""
+        """Add a translation to an existing value"""
         self.values.add(value.lower())
 
 class TranslationBST:
-    """Arbre binaire pour stocker les traductions."""
+    """Binary tree to stock translation"""
     def __init__(self):
         self.root = None
 
     def insert(self, key, value):
-        """Insère un mot et sa traduction dans l'arbre, gérant les homonymes."""
+        """add a word and it's transaltion in the tree, managing homonyms"""
         self.root = self._insert_recursive(self.root, key, value)
 
     def _insert_recursive(self, node, key, value):
@@ -33,7 +33,7 @@ class TranslationBST:
         return node
 
     def search(self, key):
-        """Recherche un mot et retourne toutes ses traductions."""
+        """search a word and returns all the translatiosn"""
         node = self._search_recursive(self.root, key)
         return node.values if node else None
 
@@ -45,7 +45,7 @@ class TranslationBST:
         return self._search_recursive(node.right, key)
 
     def batch_insert(self, word_pairs, is_english=True):
-        """Insère plusieurs mots depuis un fichier."""
+        """upload miltiple words from a file"""
         for english, french in word_pairs:
             if is_english:
                 self.insert(english, french)
@@ -53,11 +53,11 @@ class TranslationBST:
                 self.insert(french, english)
                 
     def delete(self, key):
-        """Supprime un mot et ses traductions de l'arbre."""
+        """delete a word and it's translation from the tree"""
         self.root = self._delete_recursive(self.root, key)
                 
     def _delete_recursive(self, node, key):
-        """Supprime un nœud dans l'arbre."""
+        """delete a node from the tree."""
         if not node:
             return None
         if key < node.key:
@@ -77,13 +77,11 @@ class TranslationBST:
         return node
 
     def _find_min(self, node):
-        """Trouve le nœud avec la plus petite clé."""
         while node.left:
             node = node.left
         return node
         
     def get_height(self):
-        """Calcule la hauteur de l'arbre."""
         return self._get_height_recursive(self.root)
         
     def _get_height_recursive(self, node):
@@ -92,20 +90,16 @@ class TranslationBST:
         return 1 + max(self._get_height_recursive(node.left), self._get_height_recursive(node.right))
         
     def get_predecessor(self, key):
-        """Trouve le prédécesseur d'un mot dans l'ordre du dictionnaire."""
         node = self._search_recursive(self.root, key)
         if not node:
             return None
             
-       
         if node.left:
             return self._find_max(node.left).key
             
-        
         return self._find_predecessor_ancestor(self.root, key)
         
     def _find_max(self, node):
-        """Trouve le nœud avec la plus grande clé."""
         while node.right:
             node = node.right
         return node
@@ -122,16 +116,13 @@ class TranslationBST:
             return predecessor
             
     def get_successor(self, key):
-        """Trouve le successeur d'un mot dans l'ordre du dictionnaire."""
         node = self._search_recursive(self.root, key)
         if not node:
             return None
             
-        
         if node.right:
             return self._find_min(node.right).key
             
-        
         return self._find_successor_ancestor(self.root, key)
         
     def _find_successor_ancestor(self, node, key, successor=None):
@@ -146,7 +137,6 @@ class TranslationBST:
             return successor
             
     def inorder_traversal(self):
-        """Parcours l'arbre en ordre (ordre alphabétique)."""
         result = []
         self._inorder_traversal_recursive(self.root, result)
         return result
@@ -159,7 +149,6 @@ class TranslationBST:
 
 
 def load_from_excel(file_path):
-    """Charge des paires de mots depuis un fichier Excel."""
     word_pairs = []
     wb = openpyxl.load_workbook(file_path)
     sheet = wb.active
@@ -170,7 +159,6 @@ def load_from_excel(file_path):
     return word_pairs
 
 def load_from_txt(file_path):
-    """Charge des paires de mots depuis un fichier texte (format: mot_anglais=mot_français)."""
     word_pairs = []
     with open(file_path, mode='r', encoding='utf-8') as file:
         for line in file:
@@ -184,40 +172,3 @@ def load_from_txt(file_path):
 
 english_tree = TranslationBST()
 french_tree = TranslationBST()
-
-
-def initialize_with_test_data():
-    test_pairs = [
-        ("hello", "bonjour"),
-        ("goodbye", "au revoir"),
-        ("thank you", "merci"),
-        ("please", "s'il vous plaît"),
-        ("yes", "oui"),
-        ("no", "non"),
-        ("how are you", "comment allez-vous"),
-        ("good morning", "bonjour"),
-        ("good evening", "bonsoir"),
-        ("good night", "bonne nuit")
-    ]
-    
-    for english, french in test_pairs:
-        english_tree.insert(english, french)
-        french_tree.insert(french, english)
-    
-    return english_tree, french_tree
-
-if __name__ == "__main__":
-    
-    english_tree, french_tree = initialize_with_test_data()
-    
-    print("Test de recherche:")
-    print("Translation de 'hello':", english_tree.search("hello"))
-    print("Translation de 'bonjour':", french_tree.search("bonjour"))
-    
-    print("\nHauteur des arbres:")
-    print("Arbre anglais:", english_tree.get_height())
-    print("Arbre français:", french_tree.get_height())
-    
-    print("\nParcours en ordre de l'arbre anglais:")
-    for word, translations in english_tree.inorder_traversal():
-        print(f"{word}: {', '.join(translations)}")

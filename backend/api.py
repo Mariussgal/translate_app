@@ -15,15 +15,6 @@ french_tree = TranslationBST()
 
 recent_additions = []
 
-stats = {
-    "totalWords": 0,
-    "englishWords": 0,
-    "frenchWords": 0,
-    "averageTranslationsPerWord": 1.0,
-    "lastUpdated": datetime.datetime.now().isoformat()
-}
-
-
 def add_sample_data():
     print("Adding sample data...")
     sample_pairs = [
@@ -48,14 +39,14 @@ def add_sample_data():
             recent_additions.append({
                 "word": english,
                 "translation": french,
-                "date": (datetime.datetime.now() - datetime.timedelta(days=len(recent_additions) % 5)).isoformat()
+                "date": datetime.datetime.now().isoformat()
             })
         except Exception as e:
             print(f"Error adding sample data: {english} -> {french}: {str(e)}")
     
 
 
-dictionary_management.initialize(english_tree, french_tree, recent_additions, stats)
+dictionary_management.initialize(english_tree, french_tree, recent_additions)
 file_upload.initialize(english_tree, french_tree, recent_additions)
 
 
@@ -90,7 +81,6 @@ def translate():
 
 
 add_sample_data()
-dictionary_management.update_statistics()
 
 if __name__ == '__main__':
     

@@ -138,7 +138,7 @@ In our implementation, each node in the tree contains:
 
 This structure was chosen to optimize the translation process while maintaining the ability to expand the dictionary over time.
 
-##⚠️ Important Note About Render Free Tier
+## ⚠️ Important Note About Render Free Tier
 
 Please be aware that this application is hosted on Render's free tier, which has an auto-sleep feature that "spins down" inactive instances after a period of inactivity (typically 15-30 minutes without any traffic).
 

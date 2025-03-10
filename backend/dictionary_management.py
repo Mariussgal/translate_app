@@ -60,6 +60,8 @@ def manage_word():
         if len(recent_additions) > 100:
             recent_additions.pop(0)
         
+        return jsonify({"success": True, "message": "Word added/modified successfully"})
+
     
     elif request.method == 'DELETE':
         word = request.args.get('word', '').lower()
@@ -75,14 +77,17 @@ def manage_word():
             if from_lang == 'french':
                 for trans in translations:
                     english_tree.root = delete_node(english_tree.root, trans, word)
-                
+        
                 french_tree.root = delete_node(french_tree.root, word, None)
             else:
                 for trans in translations:
                     french_tree.root = delete_node(french_tree.root, trans, word)
-                
+        
                 english_tree.root = delete_node(english_tree.root, word, None)
-            
+    
+    
+            return jsonify({"success": True, "message": "Word deleted successfully"})
+        
         else:
             return jsonify({"error": "Word not found"}), 404
 

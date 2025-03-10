@@ -138,5 +138,19 @@ In our implementation, each node in the tree contains:
 
 This structure was chosen to optimize the translation process while maintaining the ability to expand the dictionary over time.
 
+##⚠️ Important Note About Render Free Tier
+
+Please be aware that this application is hosted on Render's free tier, which has an auto-sleep feature that "spins down" inactive instances after a period of inactivity (typically 15-30 minutes without any traffic).
+
+When you upload words to the dictionary, they are successfully stored in the Binary Search Tree (BST) data structures. However, after some time of inactivity, Render automatically puts the instance to sleep to save resources. 
+When you access the application again, Render has to "wake up" the instance, which:
+
+-Causes a delay of about 50 seconds or more for the first request
+-Loses any previously uploaded dictionary data
+
+
+
+This behavior is a limitation of the free tier hosting and not an issue with the application itself. For persistent data storage across application restarts, a paid hosting plan or implementing a database solution would be required.
+
 ## Contribution
 Contributions to this project are welcome. Please feel free to submit bug fixes, improvements, or new features via pull requests. For major changes, please open an issue first to discuss what you would like to change.

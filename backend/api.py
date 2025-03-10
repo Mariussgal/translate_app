@@ -23,7 +23,9 @@ stats = {
     "lastUpdated": datetime.datetime.now().isoformat()
 }
 
+
 def add_sample_data():
+    print("Adding sample data...")
     sample_pairs = [
         ("hello", "bonjour"),
         ("goodbye", "au revoir"),
@@ -38,14 +40,19 @@ def add_sample_data():
     ]
     
     for english, french in sample_pairs:
-        english_tree.insert(english, french)
-        french_tree.insert(french, english)
-        
-        recent_additions.append({
-            "word": english,
-            "translation": french,
-            "date": (datetime.datetime.now() - datetime.timedelta(days=len(recent_additions) % 5)).isoformat()
-        })
+        try:
+            print(f"Adding: {english} -> {french}")
+            english_tree.insert(english, french)
+            french_tree.insert(french, english)
+            
+            recent_additions.append({
+                "word": english,
+                "translation": french,
+                "date": (datetime.datetime.now() - datetime.timedelta(days=len(recent_additions) % 5)).isoformat()
+            })
+        except Exception as e:
+            print(f"Error adding sample data: {english} -> {french}: {str(e)}")
+    
 
 
 dictionary_management.initialize(english_tree, french_tree, recent_additions, stats)
@@ -81,12 +88,12 @@ def translate():
     else:
         return jsonify({"translations": []})
 
+
+add_sample_data()
+dictionary_management.update_statistics()
+
 if __name__ == '__main__':
     
-    add_sample_data()
-    
-
-    dictionary_management.update_statistics()
     
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
